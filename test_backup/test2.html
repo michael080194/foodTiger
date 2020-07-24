@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <title>Template7 实例教程</title>
+    <link rel="stylesheet" href="f7/framework7.min.css">
+    <link rel="stylesheet" href="kycfood/css/icons.css">
+    <link rel="stylesheet" href="kycfood/css/app.css">
+	</head>
+	<body>
+		<div class="views">
+			<div class="view view-main">
+        <div data-page="historicplaces" class="page cached">
+          <div class="container" id="content-wrap">
+            <script id="template" type="text/template7">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Occupation</th>
+                    <th>Hometown</th>          
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each peoples}}
+                    <tr>
+                      <td>{{name}}</td>
+                      <td>{{occupation}}</td>            
+                      <td>{{hometown}}</td>            
+                    </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </script>
+          </div>
+        </div>
+			</div>
+		</div>
+    <script src="f7/framework7.min.js"></script>
+    <script src="tabletop.js"></script>
+  </body>
+  <script>// 声明Dom7
+      var myApp = new Framework7({
+          animateNavBackIcon:true
+      });
+      var $$ = Dom7;
+      var json = {
+      peoples: [{
+          name: "Johny doe",
+          occupation: "Web designer",
+          hometown: "New york"
+      }, {
+          name: "Mark Davis",
+          occupation: "Photographer",
+          hometown: "Germany"
+      }, {
+          name: "Susan White",
+          occupation: "Seo executive",
+          hometown: "Greenland"
+      }, {
+          name: "Joseph Groce",
+          occupation: "PHP developer",
+          hometown: "Australia"
+      }, {
+          name: "Mohammad Wali",
+          occupation: "Web developer",
+          hometown: "India"
+      }, {
+          name: "Eddie Blom",
+          occupation: "Web designer",
+          hometown: "New york"
+      }, {
+          name: "John Anderson",
+          occupation: "Graphic designer",
+          hometown: "New york"
+      }, {
+          name: "Helen Nelson",
+          occupation: "Web developer",
+          hometown: "Australia"
+      }]
+  };
+
+  var json2 = {
+          "name" : "Johny doe",
+          "occupation" : "Web designer",
+          "hometown" : "New york"
+      }
+  var xx1 = JSON.stringify(json2);
+  var url2 = "https://script.google.com/macros/s/AKfycbyBI6VppQbEv2NEeLUp5yWFo_sDDRIsZEcsCN3ehAYojmJWCME/exec";
+  url2 += "?callback=ctrlq&name=123" ;
+  var url1 = "https://spreadsheets.google.com/feeds/list/1HaVMKZn3POj8TxOH-XMvSlKXomDNuqyi-zceOI6ug6xKYX25e1adfP5H/od6/public/values"
+    // myApp.request.get(url1, function(data){ console.log(data); });    
+   // for professional search page card details on right hand side
+   var template = document.querySelector('#template').innerHTML;
+  var template_compiled = Template7(template).compile();
+
+  var details_compiledRendered = template_compiled(json);
+  document.querySelector('#content-wrap').innerHTML = details_compiledRendered;
+ 
+
+  var params = {};
+  myApp.request({
+        url: url2,
+        crossDomain:true,
+        data: params,
+        method: "GET",
+        dataType: "jsonp",
+        beforeSend:function(xhr) {
+          myApp.preloader.show();
+        },
+        success: function(response, xhr, status) {
+          console.log(response);
+          myApp.preloader.hide();
+        }, // end success
+        complete:function(xhr, status) {
+          myApp.preloader.hide();
+        },
+        error:function(xhr, status) {
+          myApp.preloader.hide();
+        }
+       }); // end app.request
+
+	</script>
+</html>

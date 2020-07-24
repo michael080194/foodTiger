@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <title>Template7 实例教程</title>
+    <link rel="stylesheet" href="f7/framework7.min.css">
+    <link rel="stylesheet" href="kycfood/css/icons.css">
+    <link rel="stylesheet" href="kycfood/css/app.css">
+	</head>
+	<body  onload="onLoad1()">
+		<div class="views">
+			<div class="view view-main">
+				<div class="pages" id="aa">
+             AAAA
+              <script type="text/template7" id="personTemplate">
+                  <p>Hello, my name is {{name}} and i am {{age}} years old</p>
+                  <p>I work as {{position}} at {{company}}</p>
+              </script>
+
+              <script type="text/template7" id="carTemplate">
+                  <p>I have a great car, it is {{vendor}} {{model}}, made in {{year}} year.</p>
+                  <p>It has {{power}} hp engine with {{speed}} km/h maximum speed.</p>
+              </script>
+				</div>
+			</div>
+		</div>
+    <script src="f7/framework7.min.js"></script>
+  </body>
+  <script>// 声明Dom7
+    function onLoad1() {
+        var myApp = new Framework7({
+            //Tell Framework7 to compile templates on app init
+            // precompileTemplates: true
+        });
+
+        // Render person template to HTML, its template is already compiled and accessible as Template7.templates.personTemplate
+        var personHTML = {
+            name: 'John Doen',
+            age: 33,
+            position: 'Developer',
+            company: 'Apple'
+        };
+
+        // Compile car template to HTML, its template is already compiled and accessible as Template7.templates.carTemplate
+        var carHTML = {
+            vendor: 'Ford',
+            year:1998,
+            model: 'Mustang',
+            power: 300,
+            speed: 280
+        };
+        // 用法 1
+        var templateData = {};
+        templateData.data = [];
+        templateData.data.push(personHTML);
+        templateData.data.push(carHTML);
+        console.log(templateData.data);
+        for(var i=0;i<templateData.data.length;i++){
+           console.log(templateData.data[i]);
+        }
+
+        // 用法 2
+        var templateData = {};
+        templateData[0] = {"personHTML" : personHTML};
+        templateData[1] = {"carHTML" : carHTML};
+        console.log(templateData);
+        for(var i=0;i<templateData.length;i++){
+           console.log(templateData[i]);
+        }
+
+        // 用法 3
+        var templateData = {};
+        templateData["personHTML"] = {personHTML};
+        templateData["carHTML"] = {carHTML};
+        console.log(templateData);
+        for(var i=0;i<templateData.length;i++){
+           console.log(templateData[i]);
+        }
+
+        // renderTemplate("personTemplate" , personHTML , "aa")
+        // renderTemplate("carTemplate" , carHTML , "aa")
+        var html = "";
+        var templatePerson = document.getElementById("personTemplate").innerHTML;
+        var compileTemplate = Template7.compile(templatePerson);
+        html += compileTemplate(personHTML);
+
+        var templateCar = document.getElementById("carTemplate").innerHTML;
+        var compileTemplate = Template7.compile(templateCar);
+        html += compileTemplate(carHTML);
+
+        document.getElementById("aa").innerHTML = html;
+      }
+      function renderTemplate(templateId , renderData , showDestination){
+        var template1 = document.getElementById(templateId).innerHTML;
+        var compileTemplate = Template7.compile(template1);
+        var html = compileTemplate(renderData);
+        document.getElementById(showDestination).innerHTML = html;
+      }
+		</script>
+</html>

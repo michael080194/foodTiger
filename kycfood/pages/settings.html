@@ -1,0 +1,52 @@
+<div class="page" data-name="settings">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="/" class="link back" id="settings001">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Back</span>
+          </a>
+        </div>
+        <div class="title">設定</div>
+        <div class="right">
+           <a class="button fill-form-from-data"  id="settings_save">儲存</a>
+       </div>         
+      </div>
+    </div>
+    <div class="page-content">
+     <form class="list" id="demo-form"> 
+       <ul>
+         <li class="item-content item-input">
+           <div class="item-inner">
+             <div class="item-title item-label">google試算表ID</div>
+             <div class="item-input-wrap">
+               <input name="spreadSheetId" type="text"  value="{{spreadSheetId}}">
+               <span class="input-clear-button"></span>
+             </div>
+           </div>
+         </li>
+   
+         <li class="item-content item-input">
+           <div class="item-inner">
+             <div class="item-title item-label">google sheet API KEY</div>
+             <div class="item-input-wrap">
+                 <input name="apiKey" type="text"  value="{{apiKey}}"/>
+                 <span class="input-clear-button"></span>
+             </div>
+           </div>
+         </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">OAuth 憑證</div>
+            <div class="item-input-wrap">
+              <input name="clientId" type="text"  value="{{clientId}}">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+   
+       </ul>
+     </form>
+   </div>
+   </div>
+   

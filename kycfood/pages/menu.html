@@ -1,0 +1,56 @@
+<!-- Initial Page, "data-name" contains page name -->
+<div data-page="menu" class="page">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a class="link back icon-only" href="#">
+                    <i class="f7-icons">
+                        arrow_left
+                    </i>
+                </a>
+            </div>
+            <div class="title">Menu</div>
+            <div class="right">
+                <a href="/checkout/" class="link">
+                    結帳
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="page-content">
+        <div class="card card-outline">
+            <div class="card-header">
+                <div class="float-left">{{table}}號桌 餐點清單</div>
+                <div class="float-right">共 $ <span class="total-price">0</span> 元</div>
+            </div>
+            <div class="card-content card-content-padding"></div>
+            <div class="card-footer">
+                <div class="float-left">請務必確認總金額是否正確無誤。</div>
+                <div class="float-right">
+                    <button class="button item-clear-order">清除全部</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            {{tabs}}
+        </div> <!-- end tabs  -->
+    </div>
+    <div class="toolbar tabbar-labels toolbar-bottom-md">
+        <div class="toolbar-inner">
+            {{#each category}}
+            {{#if @index}}
+                <a href="#tab-{{@index}}" class="tab-link">
+                    <span class="tabbar-label">{{this}}</span>
+                </a>
+            {{else}}
+                <a href="#tab-{{@index}}" class="tab-link  tab-link-active">
+                    <span class="tabbar-label">{{this}}</span>
+                </a>
+            {{/if}}
+          {{/each}}
+        </div>
+    </div>    
+</div>

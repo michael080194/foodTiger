@@ -1,0 +1,52 @@
+<!-- Initial Page, "data-name" contains page name -->
+<div data-page="checkout" class="page">
+  <div class="navbar">
+      <div class="navbar-inner">
+          <div class="left">
+              <a class="link back icon-only" href="#">
+                  <i class="f7-icons">
+                      arrow_left
+                  </i>
+              </a>
+          </div>
+          <div class="title">Checkout</div>
+          <!-- <div class="right"></div> -->
+      </div>
+  </div>
+
+  <div class="page-content">
+      <!-- List View -->
+      <div class="block-title">
+          訂單送出前確認 ( 右滑以取消項目 )
+      </div>
+
+      <div class="list list-checkout">
+          <ul></ul>
+      </div>
+
+      <div class="block block-strong row">
+          <div class="col total-price-sured">
+              $ <span>0</span> 元
+          </div>
+          <div class="col">
+              <a class="button button-raised checkout" href="#">訂餐</a>
+          </div>
+      </div>
+
+      <div class="block">
+        <div class="row">
+          <button class="button col button-fill button-round upload">上傳</button>
+          <button class="button col button-fill button-round signature">簽名</button>
+          <button class="button col button-fill button-round connectPrint">連接印表機</button>
+          <button class="button col button-fill button-round startPrintBill" style="background-color:lightgray" disabled>印表</button>
+        </div>
+      </div>
+      <p style="display: flex; justify-content: center;"> <img data-src="" width="220" height="60"  id="singnatureImg2" style="border: 1px solid blue;display:none"/></p>
+      <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+        <canvas id="printCanvas"  width="220" height="1200" style="border: 1px solid black;background-color:white"></canvas>
+      </div>
+      <canvas id="myCanvas"  width="220" height="1200" style="border: 1px solid red;background-color:white;display:none">
+      </canvas>
+
+  </div>
+</div>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2196f3">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Food Tiger</title>
+
+  <link rel="stylesheet" href="f7/framework7.min.css">
+  <link rel="stylesheet" href="kycfood/css/icons.css">
+  <link rel="stylesheet" href="kycfood/css/app.css">
+  <script>
+      var appver = "1.30"; // app version 由appRepair.php傳過來
+      var website = ""; // 網站位址
+      var url1 = website + "";//API位址
+      var device_version = ""; // 手機作業系統版本
+      var device_uuid = ""; // 手機唯一序號
+      var device_platform = ""; // 作業系統類別 (iOS 或 android)
+      var app={};
+      var pub_table = ""; // 選擇的桌號
+      var pub_category = []; // 餐點類別
+      var pub_food = ""; // 存放餐點基本檔資料
+      var pub_orderLists = []; // 訂餐的餐點明細
+      var pub_toatlAmount = 0; // 訂餐總金額
+      var pub_updateMsg = ""; // 記錄新增訂單結果
+      var pub_spreadsheetId = "1BCOJl92T2MY0mQDdXHWZv5ccM0OMeJsIt2GL2f9UZb0"; // spreadSheet ID
+
+      var pub_googleAPIkey = "AIzaSyBw4BgSNbS6wxjjsojkO6O5d7AtgdiTOoQ"; // API key
+      var pub_clientID = "1020047229185-rhhc8ktrsg9tgdhidkiuq2pqvjtj5pod.apps.googleusercontent.com"; // Open Authrizetion ID
+
+  </script>
+  <style>
+
+
+    /* Create three equal columns that floats next to each other */
+    .k_column {
+      float: left;
+      background-color: red;
+      width: 33.33%;
+      padding: 10px;
+      width : 50px;
+      height: 50px; /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
+</head>
+<body onload="onLoad()">
+	<div id="app">
+	  <!-- Statusbar overlay -->
+	  <div class="statusbar"></div>
+
+	  <!-- Your main view, should have "view-main" class -->
+	  <div class="view view-main">
+	    <!-- Initial Page, "data-name" contains page name -->
+	    <div data-name="home" class="page">
+
+	      <!-- Top Navbar -->
+	      <div class="navbar">
+	        <div class="navbar-inner">
+	          <div class="title">登入</div>
+	        </div>
+	      </div>
+
+        <div class="toolbar tabbar-labels toolbar-bottom-md">
+          <div class="toolbar-inner">
+            <a href="/qrcode/" class="tab-link">
+              <i class="icon f7-icons ios-only">qrcode</i>
+              <i class="icon f7-icons ios-only icon-ios-fill">qrcode</i>
+              <i class="icon f7-icons material-icons">qrcode</i>
+              <span class="tabbar-label">QRCode</span>
+            </a>
+            <a href="/about/" class="tab-link">
+              <i class="icon f7-icons ios-only">info_round</i>
+              <i class="icon f7-icons ios-only icon-ios-fill">info_round_fill</i>
+              <i class="icon material-icons md-only">info</i>
+              <span class="tabbar-label">關於</span>
+            </a>
+              <a href="/settings/" class="tab-link">
+                  <i class="icon f7-icons ios-only">settings</i>
+                  <i class="icon f7-icons ios-only icon-ios-fill">settings_fill</i>
+                  <i class="icon material-icons md-only">settings</i>
+                  <span class="tabbar-label">設定</span>
+              </a>
+          </div>
+        </div>
+        <!-- Scrollable page content -->
+
+	      <div class="page-content" id="my-login-screen">
+          <div class="block">
+            <p> <h1  style="text-align:center">歡迎使用 food Tiger 點餐系統</h1> </p>
+
+            <div id ="mainLogo">
+                <img data-src="kycfood/image/tiger.png" class="lazy">
+            </div>
+
+          </div>
+          <div class="block">
+            <p class="row">
+              <button class="col button button-fill color-green login-button">Sign In</button>
+            </p>
+          </div>
+
+	      </div>
+	    </div>
+	  </div>
+	</div>
+  <!-- Framework7 library -->
+  <script src="f7/framework7.min.js"></script>
+  <!-- App routes -->
+  <script src="kycfood/js/routes.js"></script>
+  <!-- Cordova -->
+  <script src="cordova.js"></script>
+
+  <!-- Your custom app scripts -->
+  <script src="kycfood/js/app.js"></script>
+  <script src="kycfood/js/menu.js"></script>
+  <script src="kycfood/js/checkout.js"></script>
+  <script src="kycfood/js/print_bill.js"></script>
+  <script src="kycfood/js/upload.js"></script>
+  <script async defer src="https://apis.google.com/js/api.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!-- Initial Page, "data-name" contains page name -->
+<div data-page="menu" class="page">
+  <div class="navbar">
+      <div class="navbar-inner">
+          <div class="left">
+              <a class="link back icon-only" href="#">
+                  <i class="f7-icons">
+                      arrow_left
+                  </i>
+              </a>
+          </div>
+          <div class="title">請選擇桌號</div>
+      </div>
+  </div>
+  <div class="page-content">
+    <div class="block">
+      <div class="row">
+        {{#each tableData}}
+        <a href="#" class="col button button-fill button-raised k_table" data-table={{table}}>
+          <font size="6"> {{table}} </font>
+        </a>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

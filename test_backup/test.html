@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Template7 实例教程
+		</title>
+	</head>
+	<body>
+		<div class="views">
+			<div class="view view-main">
+				<div class="pages">
+					<script id="homeTemplate" type="text/template7">
+                        <div data-page="home" class="page">
+                            <div class="page-content">
+                                <div class="content-block">
+                                   <p>Here are the list of people i know:</p>
+									<ul>
+									  {{#each people}}
+									  <li>{{@index}}. {{this}}</li>
+									  {{/each}}    
+									</ul>           
+								</div>
+							</div>
+						</div>    
+					</script>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="//ku.shouce.ren/libs/fk7/1.4.2/js/framework7.min.js">
+		</script>
+		<script>// 声明Dom7
+			var $$ = Dom7;
+			// 初始化 App
+			var myApp = new Framework7({
+				precompileTemplates: true
+			}
+									  );
+			var mainView = myApp.addView('.view-main');
+			// Now we may render our compiled template by passing required context
+			var context = {
+				people : ['John Doe', 'Mark Johnson']
+			}
+			;
+			mainView.router.load({
+				template: Template7.templates.homeTemplate,
+				context: context
+			}
+								)
+		</script>
+	</body>
+</html>
