@@ -88,11 +88,10 @@ function updateSignInStatus(isSignedIn) {
 }
 
 function handleSignInClick(event) {
-  alert("111");
   gapi.auth2.getAuthInstance().signIn();
-  alert("222");
-  // makeApiCall("food_category");
-  // makeApiCall("food");
+
+  makeApiCall("food_category");
+  makeApiCall("food");
 
   app.views.main.router.navigate("/table/");
 }
@@ -114,7 +113,7 @@ function makeApiCall(dataType) {
     // var last_row = response.result.values.length;
     // console.log("show last_row:" + last_row);
   }, function(reason) {
-     alert(dataType + ' error:\n' + reason.result.error.message);
+     alert("makeApiCall " + dataType + ' error:\n' + reason.result.error.message);
   });
 }
 
