@@ -89,9 +89,9 @@ function updateSignInStatus(isSignedIn) {
 
 function handleSignInClick(event) {
   gapi.auth2.getAuthInstance().signIn();
-  makeApiCall("food_category");
-  makeApiCall("food");
-  // handleSignOutClick();
+  // makeApiCall("food_category");
+  // makeApiCall("food");
+
   app.views.main.router.navigate("/table/");
 }
 
@@ -112,7 +112,7 @@ function makeApiCall(dataType) {
     // var last_row = response.result.values.length;
     // console.log("show last_row:" + last_row);
   }, function(reason) {
-    console.error('error: ' + reason.result.error.message);
+     alert(dataType + ' error:\n' + reason.result.error.message);
   });
 }
 
