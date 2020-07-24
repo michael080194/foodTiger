@@ -88,12 +88,14 @@ function updateSignInStatus(isSignedIn) {
 }
 
 function handleSignInClick(event) {
-  gapi.auth2.getAuthInstance().signIn();
+  testSignIn();
 
-  makeApiCall("food_category");
-  makeApiCall("food");
+  // gapi.auth2.getAuthInstance().signIn();
 
-  app.views.main.router.navigate("/table/");
+  // makeApiCall("food_category");
+  // makeApiCall("food");
+
+  // app.views.main.router.navigate("/table/");
 }
 
 function makeApiCall(dataType) {
@@ -119,6 +121,23 @@ function makeApiCall(dataType) {
 
 function handleSignOutClick(event) {
   gapi.auth2.getAuthInstance().signOut();
+}
+
+function testSignIn(){
+  Promise.resolve(gapi.auth2.getAuthInstance().signIn()).then(function() {
+    alert("testSignIn");
+    makeApiCall("food_category");
+    makeApiCall("food");
+  
+    app.views.main.router.navigate("/table/");
+
+  }).catch(function(error) {
+    if (error && error.error == 'popup_blocked_by_browser') {
+      // A popup has been blocked by the browser
+    } else {
+      // some other error
+    }
+  });  
 }
 
 
