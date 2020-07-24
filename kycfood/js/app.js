@@ -88,8 +88,9 @@ function updateSignInStatus(isSignedIn) {
 }
 
 function handleSignInClick(event) {
+  alert("handleSignInClick Before");
   testSignIn();
-
+  alert("handleSignInClick After");
   // gapi.auth2.getAuthInstance().signIn();
 
   // makeApiCall("food_category");
