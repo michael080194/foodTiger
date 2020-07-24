@@ -125,7 +125,7 @@ function handleSignOutClick(event) {
 }
 
 function testSignIn(){
-  Promise.resolve(gapi.auth2.getAuthInstance().signIn()).then(function() {
+  Promise.resolve(window.gapi.auth2.getAuthInstance().signIn()).then(function() {
     alert("testSignIn");
     makeApiCall("food_category");
     makeApiCall("food");
