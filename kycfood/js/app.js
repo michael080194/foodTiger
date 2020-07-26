@@ -88,15 +88,13 @@ function updateSignInStatus(isSignedIn) {
 }
 
 function handleSignInClick(event) {
-  alert("handleSignInClick Before");
-  testSignIn();
-  alert("handleSignInClick After");
-  // gapi.auth2.getAuthInstance().signIn();
+  // testSignIn();
+  gapi.auth2.getAuthInstance().signIn();
 
-  // makeApiCall("food_category");
-  // makeApiCall("food");
+  makeApiCall("food_category");
+  makeApiCall("food");
 
-  // app.views.main.router.navigate("/table/");
+  app.views.main.router.navigate("/table/");
 }
 
 function makeApiCall(dataType) {
@@ -126,7 +124,6 @@ function handleSignOutClick(event) {
 
 function testSignIn(){
   Promise.resolve(window.gapi.auth2.getAuthInstance().signIn()).then(function() {
-    alert("testSignIn");
     makeApiCall("food_category");
     makeApiCall("food");
   

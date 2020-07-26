@@ -29,9 +29,9 @@ function gen_food_tab(){
           tab +=`
           <li class="accordion-item  accordion-item-opened">
           <div class="accordion-item-content">
-              <div class="block">
-                  <div class="row">
-                      <div class="col-30">
+              <div class="block" >
+                  <div class="row"  style="border: solid 1px green;">
+                      <div class="col-30"  style="border: solid 1px green;">
                           <img data-src="${pub_food[i][5]}" class="lazy" width="100%">
                       </div>
                       <div class="col-70">
